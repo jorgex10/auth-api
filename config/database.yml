@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: auth_api_development
+
+test:
+  <<: *default
+  database: auth_api_test
+
+production:
+  <<: *default
+  database: <%= ENV['AUTH_API_DATABASE'] %>
+  username: <%= ENV['AUTH_API_DATABASE_USERNAME'] %>
+  password: <%= ENV['AUTH_API_DATABASE_PASSWORD'] %>
+  host: <%= ENV['AUTH_API_DATABASE_HOSTNAME'] %>
+  port: <%= ENV['AUTH_API_DATABASE_PORT'] %>
